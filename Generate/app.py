@@ -286,10 +286,8 @@ def add_block():
         data = {
             "name": request.form['name'],
             "email": request.form['email'],
-            "phnumber": request.form['phnumber'],
-            "coursename": request.form['coursename'],
-            "courseid": request.form['courseid'],
-            "instname": request.form['instname'],
+            "ra": request.form['ra'],
+            "palestra": request.form['palestra'],
             "startdate": request.form['startdate'],
             "enddate": request.form['enddate']
         }

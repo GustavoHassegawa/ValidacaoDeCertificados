@@ -2,10 +2,8 @@ let generated_qr_code;
 async function uploadCertificateInfo() {
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
-    const phnumber = document.getElementById("phnumber").value;
+    const ra = document.getElementById("ra").value;
     const coursename = document.getElementById("coursename").value;
-    const courseid = document.getElementById("courseid").value;
-    const instname = document.getElementById("instname").value;
     const startdate = document.getElementById("startdate").value;
     const enddate = document.getElementById("enddate").value;
 
@@ -13,15 +11,13 @@ async function uploadCertificateInfo() {
 
     formData.append("name", name);
     formData.append("email", email);
-    formData.append("phnumber", phnumber);
+    formData.append("ra", ra);
     formData.append("coursename", coursename);
-    formData.append("courseid", courseid);
-    formData.append("instname", instname);
     formData.append("startdate", startdate);
     formData.append("enddate", enddate);
 
     console.log("uploading certificate data: ", {
-        name, email, phnumber, coursename, courseid, instname, startdate, enddate
+        name, email, ra, coursename, startdate, enddate
     });
     const res = await fetch('http://127.0.0.1:5000/add_block', {
         method: "POST",
@@ -35,8 +31,6 @@ async function uploadCertificateInfo() {
 async function generateCertificate() {
     const name = document.getElementById("name").value;
     const coursename = document.getElementById("coursename").value;
-    const courseid = document.getElementById("courseid").value;
-    const instname = document.getElementById("instname").value;
     const startdate = document.getElementById("startdate").value;
     const enddate = document.getElementById("enddate").value;
 
@@ -77,12 +71,12 @@ async function generateCertificate() {
         certificateContext.fillText(coursename, 210, 665);
 
         // Here we customize the certificate by adding the course id
-        certificateContext.font = "bold 50px Arial";
-        certificateContext.fillText(courseid, 550, 734);
+        /*certificateContext.font = "bold 50px Arial";
+         *certificateContext.fillText(courseid, 550, 734);
 
         // Here we customize the certificate by adding the institution name and location
-        certificateContext.font = "bold 50px Arial";
-        certificateContext.fillText(instname, 210, 860);
+         *certificateContext.font = "bold 50px Arial";
+         *certificateContext.fillText(instname, 210, 860);*/
 
         // Here we customize the certificate by adding the course start date
         certificateContext.font = "bold 50px Arial";

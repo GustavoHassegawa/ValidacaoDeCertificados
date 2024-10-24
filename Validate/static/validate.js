@@ -13,10 +13,8 @@ document.getElementById("registration-form").addEventListener("submit", async fu
   // Retrieve and display form values (excluding the file input)
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
-  const contact = document.getElementById("contact").value;
-  const courseName = document.getElementById("courseName").value;
-  const courseId = document.getElementById("courseId").value;
-  const instituteName = document.getElementById("instituteName").value;
+  const ra = document.getElementById("ra").value;
+  const palestra = document.getElementById("palestra").value;
   const startDate = document.getElementById("startDate").value;
   const endDate = document.getElementById("endDate").value;
   const fileInput = document.getElementById("file");
@@ -33,10 +31,8 @@ document.getElementById("registration-form").addEventListener("submit", async fu
 
   formData.append("name", name);
   formData.append("email", email);
-  formData.append("phnumber", contact);
-  formData.append("coursename", courseName);
-  formData.append("courseid", courseId);
-  formData.append("instname", instituteName);
+  formData.append("phnumber", ra);
+  formData.append("coursename", palestra);
   formData.append("startdate", startDate);
   formData.append("enddate", endDate);
   formData.append("certificate", fileInput.files[0]);

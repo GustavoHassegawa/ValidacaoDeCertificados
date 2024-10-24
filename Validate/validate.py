@@ -108,13 +108,11 @@ def get_current_hash(encrypted_data):
 def index():
     if request.method == 'POST':
         data = {
-            "courseid": request.form['courseid'],
             "coursename": request.form['coursename'],
             "email": request.form['email'],
             "enddate": request.form['enddate'],
-            "instname": request.form['instname'],
             "name": request.form['name'],
-            "phnumber": request.form['phnumber'],
+            "ra": request.form['ra'],
             "startdate": request.form['startdate'],
         }
 
