@@ -4,8 +4,7 @@ async function uploadCertificateInfo() {
     const email = document.getElementById("email").value;
     const ra = document.getElementById("ra").value;
     const coursename = document.getElementById("coursename").value;
-    const startdate = document.getElementById("startdate").value;
-    const enddate = document.getElementById("enddate").value;
+    const horas = document.getElementById("horas");
 
     const formData = new FormData();
 
@@ -13,11 +12,10 @@ async function uploadCertificateInfo() {
     formData.append("email", email);
     formData.append("ra", ra);
     formData.append("coursename", coursename);
-    formData.append("startdate", startdate);
-    formData.append("enddate", enddate);
+    formData.append("horas",horas);
 
     console.log("uploading certificate data: ", {
-        name, email, ra, coursename, startdate, enddate
+        name, email, ra, coursename, horas 
     });
     const res = await fetch('http://127.0.0.1:5000/add_block', {
         method: "POST",
@@ -30,9 +28,7 @@ async function uploadCertificateInfo() {
 
 async function generateCertificate() {
     const name = document.getElementById("name").value;
-    const coursename = document.getElementById("coursename").value;
-    const startdate = document.getElementById("startdate").value;
-    const enddate = document.getElementById("enddate").value;
+    const horas = document.getElementById("horas").value;
 
     if (!name) {
         alert("Please enter a name.");
@@ -46,7 +42,7 @@ async function generateCertificate() {
 
     // Here we load the certificate template as an image
     const templateImage = new Image();
-    templateImage.src = "/static/certificate_template.png"; // Use certificate template image here
+    templateImage.src = "/static/certificadotemplate.png"; // Use certificate template image here
 
     console.log("downloading certificate: ", generated_qr_code);
     const generated_qr_code_img = new Image()
@@ -62,31 +58,28 @@ async function generateCertificate() {
         certificateContext.drawImage(templateImage, 0, 0);
 
         // Here we customize the certificate by adding the user's name
+        // Centraliza o nome
         certificateContext.font = "bold 80px Arial";
-        certificateContext.fillStyle = "white";
-        certificateContext.fillText(name, 190, 480); // Adjust position here
+        certificateContext.fillStyle = "black";
+        const textWidth = certificateContext.measureText(name).width;
+        const x = (certificateCanvas.width - textWidth) / 2; // Centraliza o texto
+        const y = 1238; // Posição Y onde o nome será desenhado
 
-        // Here we customize the certificate by adding the course name
-        certificateContext.font = "bold 50px Arial";
-        certificateContext.fillText(coursename, 210, 665);
+        certificateContext.fillText(name,x ,y); // Adjust position here
 
-        // Here we customize the certificate by adding the course id
-        /*certificateContext.font = "bold 50px Arial";
-         *certificateContext.fillText(courseid, 550, 734);
+        //Adicionar as horas ao certificado
+        certificateContext.font = "bold 70px Arial";
+        certificateContext.fillStyle = "black";
 
-        // Here we customize the certificate by adding the institution name and location
-         *certificateContext.font = "bold 50px Arial";
-         *certificateContext.fillText(instname, 210, 860);*/
+        certificateContext.fillText(horas, 2720, 1430);
 
-        // Here we customize the certificate by adding the course start date
-        certificateContext.font = "bold 50px Arial";
-        certificateContext.fillText(startdate, 400, 935);
+        const additionalText = " horas"; // O texto que você quer adicionar
+        const additionalTextWidth = certificateContext.measureText(horas).width; // Largura do texto de horas
+        const textX = 2720 + additionalTextWidth; // Posição X para o texto adicional
 
-        // Here we customize the certificate by adding the course end date
-        certificateContext.font = "bold 50px Arial";
-        certificateContext.fillText(enddate, 850, 935);
+        certificateContext.fillText(additionalText, textX, 1430); // Desenha o texto adicional
 
-        certificateContext.drawImage(generated_qr_code_img, 1590, 1010, 320, 320);
+        certificateContext.drawImage(generated_qr_code_img, 1445, 1434, 600, 600);
 
         // Here we convert canvas to data URL (PNG)
         const certificateDataURL = certificateCanvas.toDataURL("image/png");
