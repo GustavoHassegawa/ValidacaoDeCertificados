@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="static/style.css">
-    <title>Certificate Generator</title>
+    <title>Certificados IV Workshop das Engenharias</title>
 </head>
 
 <body>
     <header>
         <img src="static\Logotipo_V2_Para_Fundo_Verde.png" alt="Logo IV Workshop das Engenharias">
-        <h2>Generate your Certificate here</h2>
+        <h2>Criar certificado</h2>
     </header>
 
     <div class="input-container">
@@ -31,19 +31,15 @@
         <input type="text" id="coursename" placeholder="Palestra/Workshop">
         <br><br>
 
-        <label for="startdate">Enter Course Start Date :</label>
-        <input type="date" id="startdate" placeholder="Enter the start date here">
+        <label for="horas">Horas :</label>
+        <input type="number" id="horas" placeholder="Horas">
         <br><br>
 
-        <label for="enddate">Enter Course Completion Date :</label>
-        <input type="date" id="enddate" placeholder="Enter the end date here">
-        <br><br>
-
-        <button onclick="generateCertificate()">Generate Now</button>
+        <button onclick="generateCertificate()">Gerar</button>
     </div>
 
     <a id="downloadLink" style="display: none;" download="Certificate.png">
-        <button id="downloadButton">Download Certificate</button>
+        <button id="downloadButton">Download Certificado</button>
     </a>
 
     <canvas id="certificateCanvas" style="display: none;"></canvas>
