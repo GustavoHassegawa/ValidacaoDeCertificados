@@ -287,9 +287,8 @@ def add_block():
             "name": request.form['name'],
             "email": request.form['email'],
             "ra": request.form['ra'],
-            "palestra": request.form['palestra'],
-            "startdate": request.form['startdate'],
-            "enddate": request.form['enddate']
+            "coursename": request.form['coursename'],
+            "horas": request.form['horas'] 
         }
 
         public_key = g.public_key
