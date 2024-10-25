@@ -4,7 +4,7 @@ async function uploadCertificateInfo() {
     const email = document.getElementById("email").value;
     const ra = document.getElementById("ra").value;
     const coursename = document.getElementById("coursename").value;
-    const horas = document.getElementById("horas");
+    const horas = document.getElementById("horas").value;
 
     const formData = new FormData();
 
@@ -78,7 +78,7 @@ async function generateCertificate() {
         const textX = 2720 + additionalTextWidth; // Posição X para o texto adicional
 
         certificateContext.fillText(additionalText, textX, 1430); // Desenha o texto adicional
-
+        
         certificateContext.drawImage(generated_qr_code_img, 1445, 1434, 600, 600);
 
         // Here we convert canvas to data URL (PNG)
