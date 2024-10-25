@@ -14,9 +14,8 @@ document.getElementById("registration-form").addEventListener("submit", async fu
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
   const ra = document.getElementById("ra").value;
-  const palestra = document.getElementById("palestra").value;
-  const startDate = document.getElementById("startDate").value;
-  const endDate = document.getElementById("endDate").value;
+  const courseName = document.getElementById("courseName").value;
+  const horas = document.getElementById("horas").value;
   const fileInput = document.getElementById("file");
 
   // Check if a file is selected
@@ -31,10 +30,9 @@ document.getElementById("registration-form").addEventListener("submit", async fu
 
   formData.append("name", name);
   formData.append("email", email);
-  formData.append("phnumber", ra);
-  formData.append("coursename", palestra);
-  formData.append("startdate", startDate);
-  formData.append("enddate", endDate);
+  formData.append("ra", ra);
+  formData.append("coursename", courseName);
+  formData.append("horas", horas);
   formData.append("certificate", fileInput.files[0]);
 
   const res = await fetch("http://127.0.0.1:5050", {
@@ -56,9 +54,13 @@ document.getElementById("registration-form").addEventListener("submit", async fu
       certificateCanvas.height = templateImage.height;
 
       certificateContext.drawImage(templateImage, 0, 0);
-      certificateContext.font = "bold 20px Arial";
-      certificateContext.fillStyle = "white";
-      certificateContext.fillText(signature, 120, 1300);
+      certificateContext.font = "bold 50px Arial";
+      certificateContext.fillStyle = "black";
+      const textWidth = certificateContext.measureText(signature).width;
+      const x = (certificateCanvas.width - textWidth) / 2; 
+      const y = 2300;
+
+      certificateContext.fillText(signature, x, y);
 
       // Here we convert canvas to data URL (PNG)
       const certificateDataURL = certificateCanvas.toDataURL("image/png");
