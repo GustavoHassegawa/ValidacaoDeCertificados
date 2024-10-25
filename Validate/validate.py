@@ -47,11 +47,13 @@ def read_qr_code(image_path):
 
     # Check if any QR code was found in the image
     if decoded_objects:
+        print("Tem QR")
         for obj in decoded_objects:
             qr_data = obj.data.decode('utf-8')
             qr_type = obj.type
             return qr_data
     else:
+        print("Não tem QR")
         return None
 
 
@@ -110,10 +112,9 @@ def index():
         data = {
             "coursename": request.form['coursename'],
             "email": request.form['email'],
-            "enddate": request.form['enddate'],
+            "horas": request.form['horas'],
             "name": request.form['name'],
             "ra": request.form['ra'],
-            "startdate": request.form['startdate'],
         }
 
         # Extract QR code content from uploaded image (you'll need a QR code library)
