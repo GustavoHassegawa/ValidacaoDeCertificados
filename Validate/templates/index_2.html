@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="UTF-8" />
@@ -9,17 +9,16 @@
 </head>
 
 <body>
-  <div class="top-banner" style="background-color: rgb(2, 2, 44)">
+  <div class="top-banner" style="background-color:  #005c3f">
     <div class="banner-container" style="margin-left: 49px">
       <div class="small-bold-text" style="
             display: flex;
             align-items: center;
-            color: white;
+            color: #005c3f;
             font-size: 12px;
             height: 40px;
           ">
-        <img src="static/img/pngwing.png" alt="" style="margin-right: 10px; width: 40px; height: 40px" />
-        Government Of India
+        <img src="static/img/Ufabc_logo.png" alt="" style="margin-right: 10px; width: 50; height: 44px" />
       </div>
     </div>
   </div>
@@ -29,6 +28,7 @@
         margin: auto;
         overflow: hidden;
         position: relative;
+        background-color: #005c3f;
       ">
     <div class="nav-container" style="
           width: 100%;
@@ -36,24 +36,12 @@
           overflow: hidden;
           position: relative;
           margin-left: 40px;
+          background-color: #005c3f;
         ">
-      <div style="display: flex; align-items: center">
-        <img src="static/img/emblem.png" alt="" style="width: 60px; height: 90px" />
+      <div style="display: flex; align-items: center; background-color: #005c3f;">
+        <img src="static/img/Logotipo_IVWdE.png" alt="" style="width: 205px; height: 70px" />
         <img src="static/img/line.png" alt="" style="width: 40px; height: 90px" />
-        <img src="static/img/digivault.png" alt="" style="width: 90px; height: 100px" />
-        <div class="small-bold-text" style="
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              color: blue;
-              font-size: 30px;
-              margin-right: 800px;
-            ">
-          DigiVault
-          <div style="color: blue; font-size: 10px">
-            A secure and trust files
-          </div>
-        </div>
+        <img src="static/img/cecs.png" alt="" style="width: 210px; height: 70px" />
         <!-- <div class="button">
             <button class="semi-rounded-button">Sign In</button>
             <div class="button-gap"></div>
@@ -65,11 +53,11 @@
 
   <div class="main">
     <div class="container">
-      <h2>Validation Form</h2>
+      <h2>Validação de Certificado</h2>
       <form id="registration-form">
 
         <div class="form-group">
-          <label for="name">Name :</label>
+          <label for="name">Nome :</label>
           <input type="text" id="name" name="name" required />
         </div>
 
@@ -95,16 +83,16 @@
 
         <div class="form-group">
           <label for="file" class="custom-file-upload">
-            Upload Certificate
+            Upload Certificado
           </label>
           <input type="file" id="file" name="file" accept=".png" required />
         </div>
 
-        <button type="submit" class="btn-submit">Upload & Validate</button>
+        <button type="submit" class="btn-submit">Upload & Validação</button>
         <div id="upload-feedback"></div>
         <!-- Display upload feedback here -->
         <a id="downloadLink" style="display: none" download="Certificate.png">
-          <button id="downloadButton">Download Certificate</button>
+          <button id="downloadButton">Download Certificado</button>
         </a>
       </form>
     </div>
