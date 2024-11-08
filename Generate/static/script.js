@@ -37,7 +37,7 @@ async function generateCertificate() {
         return;
     }
 
-    if(template == "Voluntário") {
+    if(template == "voluntario") {
         await uploadCertificateInfo();
 
         const certificateCanvas = document.getElementById("certificateCanvas");
@@ -45,7 +45,7 @@ async function generateCertificate() {
 
         // Here we load the certificate template as an image
         const templateImage = new Image();
-        templateImage.src = "/static/CertificadosTemplate.png"; // Use certificate template image here
+        templateImage.src = "/static/CertificadoVersao2.png"; // Use certificate template image here
 
         console.log("downloading certificate: ", generated_qr_code);
         const generated_qr_code_img = new Image()
@@ -85,7 +85,7 @@ async function generateCertificate() {
             certificateContext.fillText(textoTemplate, xTemplate, 1350)
             certificateContext.fillText(texto2, x2, 1430);
 
-            certificateContext.drawImage(generated_qr_code_img, 1445, 1434, 600, 600);
+            certificateContext.drawImage(generated_qr_code_img, 2045, 1434, 600, 600);
 
             // Here we convert canvas to data URL (PNG)
             const certificateDataURL = certificateCanvas.toDataURL("image/png");
@@ -104,7 +104,7 @@ async function generateCertificate() {
 
         // Here we load the certificate template as an image
         const templateImage = new Image();
-        templateImage.src = "/static/CertificadosTemplate.png"; // Use certificate template image here
+        templateImage.src = "/static/CertificadoVersao2.png"; // Use certificate template image here
 
         console.log("downloading certificate: ", generated_qr_code);
         const generated_qr_code_img = new Image()
@@ -150,7 +150,7 @@ async function generateCertificate() {
             certificateContext.fillText(texto1, x1, 1350);
             certificateContext.fillText(texto2, x2, 1430);
 
-            certificateContext.drawImage(generated_qr_code_img, 1445, 1434, 600, 600);
+            certificateContext.drawImage(generated_qr_code_img, 2645, 1434, 600, 600);
 
             // Here we convert canvas to data URL (PNG)
             const certificateDataURL = certificateCanvas.toDataURL("image/png");
