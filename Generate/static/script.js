@@ -159,6 +159,75 @@ async function generateCertificate() {
             certificateLink.href = certificateDataURL;
             certificateLink.style.display = "block";
         };
+    } else if(template == 'palestrante'){
+
+        await uploadCertificateInfo();
+
+        const certificateCanvas = document.getElementById("certificateCanvas");
+        const certificateContext = certificateCanvas.getContext("2d");
+
+        // Here we load the certificate template as an image
+        const templateImage = new Image();
+        templateImage.src = "/static/CertificadoVersao2.png"; // Use certificate template image here
+
+        console.log("downloading certificate: ", generated_qr_code);
+        const generated_qr_code_img = new Image()
+        generated_qr_code_img.crossOrigin = "anonymous"
+        generated_qr_code_img.src = generated_qr_code;
+
+        templateImage.onload = function () {
+            // Here we set canvas dimensions to match the template image
+            certificateCanvas.width = templateImage.width;
+            certificateCanvas.height = templateImage.height;
+
+            // Here we draw the template image on the canvas
+            certificateContext.drawImage(templateImage, 0, 0);
+
+            // Here we customize the certificate by adding the user's name
+            // Centraliza o nome
+            certificateContext.font = "bold 80px Arial";
+            certificateContext.fillStyle = "black";
+            const textWidth = certificateContext.measureText(name).width;
+            const x = (certificateCanvas.width - textWidth) / 2; // Centraliza o texto
+            const y = 1158; // Posição Y onde o nome será desenhado
+
+            certificateContext.fillText(name,x ,y); // Adjust position here
+
+            certificateContext.font = " 80px Arial";
+            certificateContext.fillStyle = "black";
+
+            const textoTemplate = "Apresentou a palestra:";
+            const textWidthTemplate = certificateContext.measureText(textoTemplate).width;
+            const xTemplate = (certificateCanvas.width - textWidthTemplate) / 2;
+
+            const texto1 = `${coursename}`;
+            const textWidth1 = certificateContext.measureText(texto1).width;
+            const x1 = (certificateCanvas.width - textWidth1) / 2;
+
+            const texto2 = `no IV WORKSHOP DAS ENGENHARIAS DA UFABC em São Bernardo do Campo,`;
+            const textWidth2 = certificateContext.measureText(texto2).width;
+            const x2 = (certificateCanvas.width - textWidth2) / 2;
+
+            const texto3 = `durante o período de 05/11/2024 e 06/11/2024, com carga horária de ${horas} hora(s)`;
+            const textWidth3 = certificateContext.measureText(texto3).width;
+            const x3 = (certificateCanvas.width - textWidth3) / 2;
+
+            
+            certificateContext.fillText(textoTemplate, xTemplate, 1270);
+            certificateContext.fillText(texto1, x1, 1350);
+            certificateContext.fillText(texto2, x2, 1430);
+            certificateContext.fillText(texto3, x3, 1510);
+
+            certificateContext.drawImage(generated_qr_code_img, 2565, 1524, 600, 600);
+
+            // Here we convert canvas to data URL (PNG)
+            const certificateDataURL = certificateCanvas.toDataURL("image/png");
+
+            // Here we set the download link href
+            const certificateLink = document.getElementById("downloadLink");
+            certificateLink.href = certificateDataURL;
+            certificateLink.style.display = "block";
+        };
     } else {
 
         await uploadCertificateInfo();
@@ -224,5 +293,5 @@ async function generateCertificate() {
             certificateLink.href = certificateDataURL;
             certificateLink.style.display = "block";
         };
-    } 
+    }
 }
