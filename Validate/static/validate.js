@@ -13,7 +13,7 @@ document.getElementById("registration-form").addEventListener("submit", async fu
   // Retrieve and display form values (excluding the file input)
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
-  const ra = document.getElementById("ra").value;
+  const ra = 1;
   const courseName = document.getElementById("courseName").value;
   const horas = document.getElementById("horas").value;
   const fileInput = document.getElementById("file");
